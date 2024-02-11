@@ -35,6 +35,6 @@ fun Application.configureSecurity() {
             }
         }
     }
-    routing {
-    }
+//    routing {
+//    }
 }

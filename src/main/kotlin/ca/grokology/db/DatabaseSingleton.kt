@@ -14,7 +14,7 @@ import java.io.File
 
 object DatabaseSingleton {
     private val appConfig = HoconApplicationConfig(ConfigFactory.load())
-    private val driverClassName = appConfig.property("db.jdbcUrl").getString()
+    private val driverClassName = appConfig.property("db.driverClassName").getString()
     private val dbUrl = appConfig.property("db.jdbcUrl").getString()
     private val dbUser = appConfig.property("db.dbUser").getString()
     private val dbPassword = appConfig.property("db.dbPassword").getString()
@@ -30,9 +30,14 @@ object DatabaseSingleton {
         validate()
     })
     fun init() {
-        val database = Database.connect(createHikariDataSource(url = dbUrl, driver = driverClassName))
-        val flyway = Flyway.configure().dataSource(dbUrl, dbUser, dbPassword).load()
-        flyway.migrate()
+        val fullDbUrl = "$dbUrl?user=$dbUser&password=$dbPassword"
+//        println(driverClassName)
+//        println(dbUrl)
+//        println(dbUser)
+//        println(dbPassword)
+        val database = Database.connect(createHikariDataSource(url = fullDbUrl, driver = driverClassName))
+        //val flyway = Flyway.configure().dataSource(dbUrl, dbUser, dbPassword).load()
+        //flyway.migrate()
         transaction(database) {
             //SchemaUtils.create(Users)
         }

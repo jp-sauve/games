@@ -12,6 +12,6 @@ fun Application.configureSockets() {
         maxFrameSize = Long.MAX_VALUE
         masking = false
     }
-    routing {
-    }
+//    routing {
+//    }
 }
