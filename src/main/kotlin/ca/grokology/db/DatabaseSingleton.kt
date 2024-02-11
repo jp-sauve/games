@@ -36,8 +36,8 @@ object DatabaseSingleton {
 //        println(dbUser)
 //        println(dbPassword)
         val database = Database.connect(createHikariDataSource(url = fullDbUrl, driver = driverClassName))
-        //val flyway = Flyway.configure().dataSource(dbUrl, dbUser, dbPassword).load()
-        //flyway.migrate()
+        val flyway = Flyway.configure().dataSource(dbUrl, dbUser, dbPassword).load()
+        flyway.migrate()
         transaction(database) {
             //SchemaUtils.create(Users)
         }
