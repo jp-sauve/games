@@ -35,7 +35,7 @@ dependencies {
     implementation("org.postgresql:postgresql:$postgresVersion")
     implementation("org.flywaydb:flyway-core:10.7.2")
     runtimeOnly("org.flywaydb:flyway-database-postgresql:10.7.2")
-    implementation("info.picocli:picocli:4.7.5")
+    implementation("com.github.ajalt.clikt:clikt:4.2.2")
     implementation("com.zaxxer:HikariCP:$hikaricpVersion")
     implementation("org.ehcache:ehcache:$ehcacheVersion")
     implementation("io.ktor:ktor-server-sessions-jvm")

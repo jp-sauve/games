@@ -3,6 +3,7 @@ package ca.grokology
 import com.typesafe.config.ConfigFactory
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -119,6 +120,7 @@ object RunMigrations {
 
   @JvmStatic
   fun main(args: Array<String>) {
+      // TODO: replace argparser with picocli
     val parser = ArgParser("RunMigrations")
     val adminUsername by parser.argument(
       ArgType.String,
